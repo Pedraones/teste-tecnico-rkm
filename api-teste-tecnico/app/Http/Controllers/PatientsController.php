@@ -40,4 +40,10 @@ class PatientsController extends Controller
         $users = DB::table('patients')->get();
         return response($users);
     }
+
+    public function getPatient($id){
+        $user = DB::table('patients')->where('id', $id)->first();
+        
+        return response()->json($user);
+    }
 }

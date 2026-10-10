@@ -17,3 +17,8 @@ Route::get('/patients', function (){
     $patientsController = new PatientsController();
     return $patientsController->list();
 });
+
+Route::get('/patients/{id}', function(int $id){
+    $patientsController = new PatientsController();
+    return $patientsController->getPatient($id);
+});

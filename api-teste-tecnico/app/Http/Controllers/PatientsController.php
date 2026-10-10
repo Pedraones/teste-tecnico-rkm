@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Patients;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use App\Models\Patients;
 
 class PatientsController extends Controller
 {
@@ -33,5 +34,10 @@ class PatientsController extends Controller
             return response('Patient not stored', 400);
         }
 
+    }
+
+    public function list(){
+        $users = DB::table('patients')->get();
+        return response($users);
     }
 }

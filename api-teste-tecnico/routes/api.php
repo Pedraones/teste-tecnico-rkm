@@ -12,3 +12,8 @@ Route::post('/patients', function (Request $request){
     $patientsController = new PatientsController();
     return $patientsController->store($request);
 });
+
+Route::get('/patients', function (){
+    $patientsController = new PatientsController();
+    return $patientsController->list();
+});

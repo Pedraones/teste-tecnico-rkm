@@ -18,7 +18,7 @@ return new class extends Migration
                 $table->char("cpf", length:11);
                 $table->date("birth_day");
                 $table->char("phone", length:15)->nullable();
-                $table->foreignId("healt_unit_id");
+                $table->foreignId("health_unit_id");
                 $table->timestamps();
             });
         }

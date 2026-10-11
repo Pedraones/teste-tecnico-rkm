@@ -38,7 +38,7 @@ class PatientsController extends Controller
     }
 
     public function list(){
-        $users = DB::table('patients')->get();
+        $users = DB::table('patients')->select("id", "health_unit_id", "name", "cpf")->get();
         return response($users);
     }
 

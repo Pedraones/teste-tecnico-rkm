@@ -13,7 +13,7 @@ class PatientsController extends Controller
     public function store(Request $request){
         $validates = $request->validate([
             'name' => ['required'],
-            'cpf' => ['required', 'min:11', 'max:11'],
+            'cpf' => ['required', 'min_digits:10', 'max_digits:12'],
             'birthday' => ['required', Rule::date()->beforeOrEqual(today())],
             'phone' => ['max:15'],
             'HealthUnitId' => ['required']

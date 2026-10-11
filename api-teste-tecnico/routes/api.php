@@ -27,3 +27,8 @@ Route::delete('/patients/{id}', function(int $id){
     $patientsController = new PatientsController();
     return $patientsController->delete($id);
 });
+
+Route::patch('/patients/{id}', function(int $id, Request $request){
+    $patientsController = new PatientsController();
+    return $patientsController->edit($id, $request);
+});

@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientsController;
+use App\Http\Controllers\HealthUnitsController;
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -31,4 +32,9 @@ Route::delete('/patients/{id}', function(int $id){
 Route::patch('/patients/{id}', function(int $id, Request $request){
     $patientsController = new PatientsController();
     return $patientsController->edit($id, $request);
+});
+
+Route::get('/health-units', function(){
+    $healthUnitsController = new HealthUnitsController();
+    return $healthUnitsController->list();
 });

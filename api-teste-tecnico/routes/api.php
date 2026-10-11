@@ -22,3 +22,8 @@ Route::get('/patients/{id}', function(int $id){
     $patientsController = new PatientsController();
     return $patientsController->getPatient($id);
 });
+
+Route::delete('/patients/{id}', function(int $id){
+    $patientsController = new PatientsController();
+    return $patientsController->delete($id);
+});

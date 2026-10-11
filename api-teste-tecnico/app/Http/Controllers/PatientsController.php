@@ -46,4 +46,9 @@ class PatientsController extends Controller
         
         return response()->json($user);
     }
+
+    public function delete($id){
+        $user = DB::table('patients')->where('id', $id)->delete();
+        return response($user);
+    }
 }

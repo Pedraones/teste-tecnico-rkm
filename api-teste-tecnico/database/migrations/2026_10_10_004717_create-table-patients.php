@@ -15,7 +15,7 @@ return new class extends Migration
             Schema::create("patients", function (Blueprint $table){
                 $table->id();
                 $table->string("name");
-                $table->char("cpf", length:11);
+                $table->bigInteger("cpf")->unique();
                 $table->date("birth_day");
                 $table->char("phone", length:15)->nullable();
                 $table->foreignId("health_unit_id");

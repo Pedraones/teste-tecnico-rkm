@@ -43,7 +43,7 @@ class PatientsController extends Controller
     }
 
     public function getPatient($id){
-        $user = DB::table('patients')->where('id', $id)->first();
+        $user = DB::table('patients')->select("id", "health_unit_id", "name", "cpf")->find($id);
         
         return response()->json($user);
     }

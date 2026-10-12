@@ -43,4 +43,29 @@ async function existCpf(cpf){
     return false;
 }
 
+async function storePatient(event){
+    event.preventDefault();
+    var datas = {
+        'name': document.getElementById('name').value,
+        'cpf': document.getElementById('cpf').value,
+        'phone': document.getElementById('phone').value,
+        'birthday': document.getElementById('birthDate').value,
+        'HealthUnitId': document.getElementById('healthUnitId').value,
+    };
+
+    existCpf = existCpf(datas.cpf);
+
+    if(existCpf) return alert('Criação interrompida: já existe paciente com este CPF');
+
+    res = await fetch("http://localhost:8000/api/patients", {
+        method: "POST",
+        headers: {
+            "Content-type": "application/json"
+        },
+        body: JSON.stringify(datas)
+    });
+
+    window.location.reload();
+}
+
 listHealthUnitisInTagSelect()

@@ -46,12 +46,7 @@ async function listAllPatients(){
 async function putDatasPatientInFormToBeEdited(patientId){
     var patient = await getPatientById(patientId);
     
-    document.getElementById('name').value = '';
-    document.getElementById('cpf').value = '';
-    document.getElementById('birthDate').value = '';
-    document.getElementById('phone').value = '';
-    document.getElementById('healthUnitId').value = '';
-    document.getElementById('patientId').value = '';
+    clearFieldsForm();
 
     document.getElementById('name').value = patient.name;
     document.getElementById('cpf').value = patient.cpf;
@@ -73,6 +68,8 @@ async function putDatasPatientInFormToBeEdited(patientId){
             'HealthUnitId': document.getElementById('healthUnitId').value
         };
         await editPatient(patientId, datas);
+        
+        clearFieldsForm()
     }
 }
 
@@ -86,6 +83,15 @@ async function editPatient(patientId, datas){
     }).then(response => console.log(response));
 
     window.location.reload()
+}
+
+function clearFieldsForm(){
+    document.getElementById('name').value = '';
+    document.getElementById('cpf').value = '';
+    document.getElementById('birthDate').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('healthUnitId').value = '';
+    document.getElementById('patientId').value = '';
 }
 
 async function getPatientById(id){

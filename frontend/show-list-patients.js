@@ -59,18 +59,18 @@ async function putDatasPatientInFormToBeEdited(patientId){
     document.getElementById('phone').value = patient.phone;
     document.getElementById('healthUnitId').value = patient.health_unit_id;
     document.getElementById('patientId').value = patientId;
-
-    document.getElementById('buttonForm').textContent = 'Salvar edição';  
 }
 
 async function editPatient(patientId, datas){
-    return await fetch(`http://localhost:8000/api/patients/${patientId}`,{
+    fetch(`http://localhost:8000/api/patients/${patientId}`,{
         method: 'PATCH',
         headers: {
             "Content-type": "application/json"
         },
         body: JSON.stringify(datas)
-    }).then(response => {return response.json()});
+    }).then(response => console.log(response));
+
+    window.location.reload()
 }
 
 async function getPatientById(id){

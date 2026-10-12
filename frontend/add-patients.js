@@ -33,4 +33,14 @@ function structureUnitsToBeListed(healthUnits){
     return unitsStructured;
 }
 
+async function existCpf(cpf){
+    var patients = await fetch("http://localhost:8000/api/patients").then(data => {return data.json()});
+    
+    for(indexPatient in patients){
+        if(patients[indexPatient].cpf == cpf) return true;
+    }
+
+    return false;
+}
+
 listHealthUnitisInTagSelect()

@@ -24,9 +24,20 @@ async function listAllPatients(){
         tdNamePatient.textContent = patientStructured[patient].patient;
 
         tdNameUnit = document.createElement('td');
-        tdNameUnit.textContent = patientStructured[patient].unit;        
+        tdNameUnit.textContent = patientStructured[patient].unit;
+        
+        const actuallyPatientId = patientStructured[patient].patientId;
+
+        buttonEdit = document.createElement('button');
+        buttonEdit.setAttribute('patientId', actuallyPatientId);
+        buttonEdit.textContent = 'Editar';
+        buttonEdit.onclick = function(){ 
+            putDatasPatientInFormToBeEdited(actuallyPatientId);
+        };
+        
         line.appendChild(tdNamePatient);
         line.appendChild(tdNameUnit);
+        line.appendChild(buttonEdit);
 
         rowToListPatients.appendChild(line);
     }

@@ -3,3 +3,16 @@ async function getAllHealthUnits(){
 
     return units;
 }
+
+function structureUnitsToBeListed(healthUnits){
+    unitsStructured = [];
+    
+    for(indexUnit in healthUnits){
+        unitsStructured.push({
+            "id": healthUnits[indexUnit].id,
+            "name": healthUnits[indexUnit].name
+        });
+    }
+
+    return unitsStructured;
+}

@@ -33,6 +33,12 @@ async function listAllPatients(){
     }
 }
 
+async function getPatientById(id){
+    var patient = await fetch(`http://localhost:8000/api/patients/${id}`).then(data => {return data.json()});
+    
+    return patient;
+}
+
 function structurePatientsToBeListed(patients, healthUnits){
     patientStructured = [];
 

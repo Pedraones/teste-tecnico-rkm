@@ -9,3 +9,19 @@ async function getAllHealthUnits(){
 
     return units;
 }
+
+function structurePatientsToBeListed(patients, healthUnits){
+    patientStructured = [];
+
+    for(let indexPatient in patients){
+        for(let indexHalthUnit in healthUnits){
+            if(healthUnits[indexHalthUnit].id == patients[indexPatient].health_unit_id)
+                patientStructured.push({
+                    'patient': patients[indexPatient].name,
+                    'unit': healthUnits[indexHalthUnit].name 
+                });
+        }    
+    }
+
+    return patientStructured;
+}

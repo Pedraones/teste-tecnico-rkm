@@ -57,7 +57,7 @@ async function putDatasPatientInFormToBeEdited(patientId){
     document.getElementById('cpf').value = patient.cpf;
     document.getElementById('birthDate').value = patient.birth_day;
     document.getElementById('phone').value = patient.phone;
-    document.getElementById('healthUnitId').value = healthUnitId;
+    document.getElementById('healthUnitId').value = patient.health_unit_id;
     document.getElementById('patientId').value = patientId;
 
     document.getElementById('buttonForm').textContent = 'Salvar edição';

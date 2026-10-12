@@ -4,6 +4,22 @@ async function getAllHealthUnits(){
     return units;
 }
 
+async function listHealthUnitisInTagSelect() {
+    units = await getAllHealthUnits();
+
+    select = document.getElementById("healthUnitId");
+    
+    units = structureUnitsToBeListed(units);
+    
+    for(indexUnit in units){
+        option = document.createElement('option');
+        option.setAttribute('value', units[indexUnit].id)
+        option.textContent = units[indexUnit].name
+        
+        select.appendChild(option);
+    }
+}
+
 function structureUnitsToBeListed(healthUnits){
     unitsStructured = [];
     
@@ -16,3 +32,5 @@ function structureUnitsToBeListed(healthUnits){
 
     return unitsStructured;
 }
+
+listHealthUnitisInTagSelect()

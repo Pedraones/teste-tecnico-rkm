@@ -59,6 +59,21 @@ async function putDatasPatientInFormToBeEdited(patientId){
     document.getElementById('phone').value = patient.phone;
     document.getElementById('healthUnitId').value = patient.health_unit_id;
     document.getElementById('patientId').value = patientId;
+
+    document.getElementById('buttonForm').textContent = 'Salvar edição';
+    document.getElementById('formPatient').onsubmit = async function(event){
+        event.preventDefault();
+
+        const patientId = document.getElementById('patientId').value;
+        const datas = {
+            "name": document.getElementById('name').value,
+            "cpf": document.getElementById('cpf').value,
+            "birthDay": document.getElementById('birthDate').value,
+            "phone": document.getElementById('phone').value,
+            'HealthUnitId': document.getElementById('healthUnitId').value
+        };
+        await editPatient(patientId, datas);
+    }
 }
 
 async function editPatient(patientId, datas){

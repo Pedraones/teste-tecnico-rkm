@@ -16,7 +16,7 @@ async function listAllPatients(){
     var rowToListPatients = document.getElementById("listPatients");
     
     var patientStructured = structurePatientsToBeListed(responseGetAllPatients, responseGetHealthUnits);
-    
+    var lines = [];
     for(patient in patientStructured){
         line = document.createElement('tr');
         
@@ -24,13 +24,32 @@ async function listAllPatients(){
         tdNamePatient.textContent = patientStructured[patient].patient;
 
         tdNameUnit = document.createElement('td');
-        tdNameUnit.textContent = patientStructured[patient].unit;
-
+        tdNameUnit.textContent = patientStructured[patient].unit;        
         line.appendChild(tdNamePatient);
         line.appendChild(tdNameUnit);
 
         rowToListPatients.appendChild(line);
     }
+}
+
+async function putDatasPatientInFormToBeEdited(patientId){
+    var patient = await getPatientById(patientId);
+    
+    document.getElementById('name').value = '';
+    document.getElementById('cpf').value = '';
+    document.getElementById('birthDate').value = '';
+    document.getElementById('phone').value = '';
+    document.getElementById('healthUnitId').value = '';
+    document.getElementById('patientId').value = '';
+
+    document.getElementById('name').value = patient.name;
+    document.getElementById('cpf').value = patient.cpf;
+    document.getElementById('birthDate').value = patient.birth_day;
+    document.getElementById('phone').value = patient.phone;
+    document.getElementById('healthUnitId').value = healthUnitId;
+    document.getElementById('patientId').value = patientId;
+
+    document.getElementById('buttonForm').textContent = 'Salvar edição';
 }
 
 async function getPatientById(id){
@@ -46,6 +65,7 @@ function structurePatientsToBeListed(patients, healthUnits){
         for(let indexHalthUnit in healthUnits){
             if(healthUnits[indexHalthUnit].id == patients[indexPatient].health_unit_id)
                 patientStructured.push({
+                    'patientId': patients[indexPatient].id,
                     'patient': patients[indexPatient].name,
                     'unit': healthUnits[indexHalthUnit].name 
                 });

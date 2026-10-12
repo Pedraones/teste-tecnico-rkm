@@ -6,13 +6,34 @@
     <title>Document</title>
 </head>
 <body>
-        <table id="listPatients">
-            <tr>
-                <th>Pacientes</th>
-                <th>Unidade</th>
-            </tr>
-        </table>
-    </body>
+    <form onsubmit="storePatient(event)">
+        <label for="name">Nome do paciente: </label>
+        <input type="text" id="name" required>
+
+        <label for="birthDate">Data de nascimento: </label>
+        <input type="date" id="birthDate" required>
+
+        <label for="cpf">CPF: </label>
+        <input type="integer" id="cpf" minlength="11" maxlength="11" required>
+        
+        <br>
+
+        <label for="phone">Telefone: </label>
+        <input type="text" id="phone" maxlength="15">
+
+        <label for="healthUnitId">Unidade do paciente: </label>
+        <select id="healthUnitId" required></select>
+
+        <button type="submit">Criar</button>
+    </form>
+    <table id="listPatients">
+        <tr>
+            <th>Pacientes</th>
+            <th>Unidade</th>
+        </tr>
+    </table>
+</body>
     
 <script type="text/javascript" src="./show-list-patients.js"></script>
+<script type="text/javascript" src="./add-patients.js"></script>
 </html>

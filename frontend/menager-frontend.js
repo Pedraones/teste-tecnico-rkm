@@ -10,6 +10,29 @@ async function getAllHealthUnits(){
     return units;
 }
 
+async function listAllPatients(){
+    var responseGetAllPatients = await getAllPatients();
+    var responseGetHealthUnits = await getAllHealthUnits();
+    var rowToListPatients = document.getElementById("listPatients");
+    
+    var patientStructured = structurePatientsToBeListed(responseGetAllPatients, responseGetHealthUnits);
+    
+    for(patient in patientStructured){
+        line = document.createElement('tr');
+        
+        tdNamePatient = document.createElement('td');
+        tdNamePatient.textContent = patientStructured[patient].patient;
+
+        tdNameUnit = document.createElement('td');
+        tdNameUnit.textContent = patientStructured[patient].unit;
+
+        line.appendChild(tdNamePatient);
+        line.appendChild(tdNameUnit);
+
+        rowToListPatients.appendChild(line);
+    }
+}
+
 function structurePatientsToBeListed(patients, healthUnits){
     patientStructured = [];
 
@@ -25,3 +48,5 @@ function structurePatientsToBeListed(patients, healthUnits){
 
     return patientStructured;
 }
+
+listAllPatients()

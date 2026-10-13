@@ -98,6 +98,28 @@ async function getAllHealthUnits(){
     return units;
 }
 
+function cleanSearch(){
+    document.getElementById('listPatients').remove();
+
+    const table = document.createElement("table");
+    table.setAttribute("id","listPatients");
+    
+    const rowHeaderTable = document.createElement("tr");
+    
+    const patientTd = document.createElement("td");
+    patientTd.textContent = "Pacientes";
+
+    const unitTd = document.createElement("td");
+    unitTd.textContent = "Unidades";
+
+    rowHeaderTable.appendChild(patientTd);
+    rowHeaderTable.appendChild(unitTd);
+    table.appendChild(rowHeaderTable);
+    document.getElementById("body").appendChild(table);
+    
+    listAllPatients();
+}
+
 async function getAllPatients(){
     var patients = await fetch("http://localhost:8000/api/patients").then(data => {return data.json()});
 

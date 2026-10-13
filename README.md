@@ -26,3 +26,8 @@ Existem algumas opções para tal, sendo elas:
 6. Descomentar DB_DATABASE e inserir o nome da base de dados criada para armazenar os dados da aplicação
 7. Descomentar DB_USERNAME e colocar o nome do usuário do computador responsável por inicar a conexão com o banco de dados
 8. Descomentar DB_PASSWORD e definir a senha que o usário do computador responsável por iniciar o serviço mariadb deve utilizar para ter permissão e efetivamente se conectador com a base de dados
+
+## Estruturando o banco de dados
+Dentro do diretório /teste-tecnico-rkm/api-teste-tecnico/ execute na ordem:
+1. `php artisan migrate`
+2. `php artisan db:seed`

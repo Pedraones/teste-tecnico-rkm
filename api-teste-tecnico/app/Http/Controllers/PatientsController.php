@@ -49,8 +49,6 @@ class PatientsController extends Controller
     }
 
     public function getPatientByName($name){
-        $name = explode(":", $name);
-        $name = $name[1];
         $patients = DB::table('patients')->where('name', 'LIKE', "%$name%")->get();
 
         return response()->json($patients);

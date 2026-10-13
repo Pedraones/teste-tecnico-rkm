@@ -1,1 +1,54 @@
 # teste-tecnico-rkm
+---
+## Pré requisitos
+Os pré requisitos que aqui serão listados são baseados nas versões das stacks utilizadas para o desenvolvimento do desafio téncico
+- PHP 8.3.x (cli) junto do pacote 'mbstring', é necessário descomentá-la no arquivo `php.ini`;
+
+Caso o SO utilizado seja baseado em Ubuntu e o php já está instalado, sem a extensão 'mbstring', é possível instalá-la executando no terminal `sudo apt install php-mbstring`
+- Composer 2.10. Link do download do Composer https://getcomposer.org/download/
+- Laravel 13.35
+- Mariadb 15.1
+- Extensão "Live Server" no VScode para execução do frontend
+
+## Instalação
+Existem algumas opções para tal, sendo elas:
+1. Digite no terminal ou no cmd: `git clone` e então coloque 'git@github.com:Pedraones/teste-tecnico-rkm.git' para clone ssh, ou 'https://github.com/Pedraones/teste-tecnico-rkm.git' para clone http
+2. Ou então baixe projeto compactado e então descompacte-o![alt text](image.png)
+
+## Configuração do banco de dados
+- Criar uma base dados mariadb para a interação da aplicação com o banco
+- Configurar as variáveis de ambiente: 
+1. Adicionar um arquivo `.env` em /teste-tecnico-rkm/api-teste-tecnico/
+2. Copiar o conteúdo de /teste-tecnico-rkm/api-teste-tecnico/**.env.example** para /teste-tecnico-rkm/api-teste-tecnico/**.env**
+3. DB_CONNECTION deve ser igual a 'mariadb' (sem as aspas);
+4. Descomentar DB_HOST e colocar o valor do host que o mariadb será executado na máquina
+5. Descomentar DB_PORT e definir o valor da porta em que o serviço mariadb é executado na máquina
+6. Descomentar DB_DATABASE e inserir o nome da base de dados criada para armazenar os dados da aplicação
+7. Descomentar DB_USERNAME e colocar o nome do usuário do computador responsável por inicar a conexão com o banco de dados
+8. Descomentar DB_PASSWORD e definir a senha que o usário do computador responsável por iniciar o serviço mariadb deve utilizar para ter permissão e efetivamente se conectador com a base de dados
+
+## Estruturando o banco de dados
+Dentro do diretório /teste-tecnico-rkm/api-teste-tecnico/ execute na ordem:
+1. `php artisan migrate`
+2. `php artisan db:seed`
+
+## Instruções para inicar o projeto todo
+- Para iniciar a api, no diretório /teste-tecnico-rkm/api-teste-tecnico/ execute `php artisan serve` ou `composer.phar run dev`
+- Para iniciar o frontend, basta clicar em "Go Live" no vscode, dentro do diretório raíz do projeto (/teste-tecnico-rkm/), então acessar "frontend" e abrir "home-page.html", como segue nas imagens![alt text](image-1.png)![alt text](image-2.png)![alt text](image-3.png)
+
+## Lista de requisitos cumpridos
+[x] Estruturação do banco de dados com migrations e seeds
+[x] Cadastro de pacientes 
+[x] Listar pacientes com nome e unidade
+[x] Pesquisa de pacientes pelo nome
+[x] Editar paciente existente
+[x] Exclusão de pacientes com confirmação
+[x] Nome, CPF, data de nascimento e unidade de saúde são obrigatórios
+[x] CPF único
+[x] Rotas da API Laravel retornando os dados esperados
+[x] Utilizar Controllers, Models e migrations do Laravel
+[x] Validar os dados no backend usando recursos do Laravel
+[x] Carregar unidades de saúde da API para um campo de seleção
+[] Erros de validação apresentados ao usuário
+[] Implementar o relacionamento entre Patient e HealthUnit no Eloquent
+[] Uso da rota GET /api/patients com busca opcional 

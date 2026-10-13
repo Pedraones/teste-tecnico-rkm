@@ -31,3 +31,7 @@ Existem algumas opções para tal, sendo elas:
 Dentro do diretório /teste-tecnico-rkm/api-teste-tecnico/ execute na ordem:
 1. `php artisan migrate`
 2. `php artisan db:seed`
+
+## Instruções para inicar o projeto todo
+- Para iniciar a api, no diretório /teste-tecnico-rkm/api-teste-tecnico/ execute `php artisan serve` ou `composer.phar run dev`
+- Para iniciar o frontend, basta clicar em "Go Live" no vscode, dentro do diretório raíz do projeto (/teste-tecnico-rkm/), então acessar "frontend" e abrir "home-page.html", como segue nas imagens![alt text](image-1.png)![alt text](image-2.png)![alt text](image-3.png)

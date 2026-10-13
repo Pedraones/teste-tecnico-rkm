@@ -21,7 +21,12 @@ Route::get('/patients', function (){
 
 Route::get('/patients/{id}', function(int $id){
     $patientsController = new PatientsController();
-    return $patientsController->getPatient($id);
+    return response($patientsController->getPatient($id));
+});
+
+Route::post('/patients/search-by-name/', function(Request $request){
+    $patientsController = new PatientsController();
+    return $patientsController->getPatientByName($request->name);
 });
 
 Route::delete('/patients/{id}', function(int $id){

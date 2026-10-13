@@ -53,10 +53,13 @@ async function storePatient(event){
         'HealthUnitId': document.getElementById('healthUnitId').value,
     };
 
-    existCpf = existCpf(datas.cpf);
-
-    if(existCpf) return alert('Criação interrompida: já existe paciente com este CPF');
-
+    const existCpfPatient = await existCpf(datas.cpf);
+    
+    if(existCpfPatient){
+        datas = {};
+        return alert('Criação interrompida: já existe paciente com este CPF');
+    }
+    
     res = await fetch("http://localhost:8000/api/patients", {
         method: "POST",
         headers: {
@@ -64,7 +67,7 @@ async function storePatient(event){
         },
         body: JSON.stringify(datas)
     });
-
+    
     window.location.reload();
 }
 

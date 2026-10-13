@@ -103,3 +103,50 @@ async function getAllPatients(){
 
     return patients;
 }
+
+async function listAllPatients(){ 
+    var responseGetAllPatients = await getAllPatients();
+    var responseGetHealthUnits = await getAllHealthUnits();
+    var rowToListPatients = document.getElementById("listPatients");
+    
+    var patientStructured = structurePatientsToBeListed(responseGetAllPatients, responseGetHealthUnits);
+    var lines = [];
+    for(patient in patientStructured){
+        line = document.createElement('tr');
+        
+        tdNamePatient = document.createElement('td');
+        tdNamePatient.textContent = patientStructured[patient].patient;
+
+        tdNameUnit = document.createElement('td');
+        tdNameUnit.textContent = patientStructured[patient].unit;
+        
+        const actuallyPatientId = patientStructured[patient].patientId;
+
+        buttonEdit = document.createElement('button');
+        buttonEdit.setAttribute('patientId', actuallyPatientId);
+        buttonEdit.textContent = 'Editar';
+        buttonEdit.onclick = function(){ 
+            putDatasPatientInFormToBeEdited(actuallyPatientId);
+        };
+
+        buttonDelete = document.createElement('button');
+        buttonDelete.setAttribute('patientId', actuallyPatientId);
+        buttonDelete.textContent = 'Deletar';
+        buttonDelete.onclick = async function(){ 
+            let verifyDesired = prompt('Caso realmente deseje excluir o paciente digite: "DELETAR", então clique em "Ok"');
+
+            if(verifyDesired == "DELETAR"){
+                let response = await deletePatient(actuallyPatientId);
+                alert(response);
+                window.location.reload();
+            }
+        };
+        
+        line.appendChild(tdNamePatient);
+        line.appendChild(tdNameUnit);
+        line.appendChild(buttonEdit);
+        line.appendChild(buttonDelete);
+
+        rowToListPatients.appendChild(line);
+    }
+}

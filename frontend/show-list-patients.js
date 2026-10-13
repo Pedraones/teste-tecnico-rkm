@@ -34,13 +34,38 @@ async function listAllPatients(){
         buttonEdit.onclick = function(){ 
             putDatasPatientInFormToBeEdited(actuallyPatientId);
         };
+
+        buttonDelete = document.createElement('button');
+        buttonDelete.setAttribute('patientId', actuallyPatientId);
+        buttonDelete.textContent = 'Deletar';
+        buttonDelete.onclick = async function(){ 
+            let verifyDesired = prompt('Caso realmente deseje excluir o paciente digite: "DELETAR", então clique em "Ok"');
+
+            if(verifyDesired == "DELETAR"){
+                let response = await deletePatient(actuallyPatientId);
+                alert(response);
+                window.location.reload();
+            }
+        };
         
         line.appendChild(tdNamePatient);
         line.appendChild(tdNameUnit);
         line.appendChild(buttonEdit);
+        line.appendChild(buttonDelete);
 
         rowToListPatients.appendChild(line);
     }
+}
+
+async function deletePatient(patientId){
+    const response = await fetch(`http://localhost:8000/api/patients/${patientId}`,{
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(response => {return response.json()});
+
+    return response;
 }
 
 async function putDatasPatientInFormToBeEdited(patientId){

@@ -43,7 +43,7 @@ class PatientsController extends Controller
     }
 
     public function getPatient($id){
-        $user = DB::table('patients')->select("id", "health_unit_id", "name", "cpf")->find($id);
+        $user = DB::table('patients')->select("id", "health_unit_id", "name", "cpf", "birth_day")->find($id);
         
         return response()->json($user);
     }
@@ -67,7 +67,7 @@ class PatientsController extends Controller
         if($request->birthDay){
             DB::table('patients')
                 ->where('id', $id)
-                ->update(['birth_day' => $request->birtDay]);
+                ->update(['birth_day' => $request->birthDay]);
         }
         if($request->phone){
             DB::table('patients')

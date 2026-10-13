@@ -6,7 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <form onsubmit="storePatient(event)">
+    <form onsubmit="storePatient(event)" id="formPatient">
+        <input type="hidden" value="" id="patientId">
+
         <label for="name">Nome do paciente: </label>
         <input type="text" id="name" required>
 
@@ -24,7 +26,7 @@
         <label for="healthUnitId">Unidade do paciente: </label>
         <select id="healthUnitId" required></select>
 
-        <button type="submit">Criar</button>
+        <button type="submit" id="buttonForm">Criar</button>
     </form>
     <table id="listPatients">
         <tr>
@@ -34,6 +36,7 @@
     </table>
 </body>
     
-<script type="text/javascript" src="./show-list-patients.js"></script>
 <script type="text/javascript" src="./add-patients.js"></script>
+<script type="text/javascript" src="./show-list-patients.js"></script>
+<script type="text/javascript" src="./edit-patients.js"></script>
 </html>

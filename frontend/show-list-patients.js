@@ -74,7 +74,7 @@ async function putDatasPatientInFormToBeEdited(patientId){
 }
 
 async function editPatient(patientId, datas){
-    fetch(`http://localhost:8000/api/patients/${patientId}`,{
+    await fetch(`http://localhost:8000/api/patients/${patientId}`,{
         method: 'PATCH',
         headers: {
             "Content-type": "application/json"

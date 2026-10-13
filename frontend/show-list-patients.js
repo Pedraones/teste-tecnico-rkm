@@ -34,13 +34,24 @@ async function listAllPatients(){
         buttonEdit.onclick = function(){ 
             putDatasPatientInFormToBeEdited(actuallyPatientId);
         };
-        
+
         line.appendChild(tdNamePatient);
         line.appendChild(tdNameUnit);
         line.appendChild(buttonEdit);
 
         rowToListPatients.appendChild(line);
     }
+}
+
+async function deletePatient(patientId){
+    const response = await fetch(`http://localhost:8000/api/patients/${patientId}`,{
+        method: "DELETE",
+        headers: {
+            "Content-type": "application/json"
+        }
+    }).then(response => {return response.json()});
+
+    return response;
 }
 
 async function putDatasPatientInFormToBeEdited(patientId){

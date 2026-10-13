@@ -48,6 +48,14 @@ class PatientsController extends Controller
         return response()->json($user);
     }
 
+    public function getPatientByName($name){
+        $name = explode(":", $name);
+        $name = $name[1];
+        $patients = DB::table('patients')->where('name', 'LIKE', "%$name%")->get();
+
+        return response()->json($patients);
+    }
+
     public function delete($id){
         $user = DB::table('patients')->where('id', $id)->delete();
         return response($user);

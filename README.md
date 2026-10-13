@@ -35,3 +35,20 @@ Dentro do diretório /teste-tecnico-rkm/api-teste-tecnico/ execute na ordem:
 ## Instruções para inicar o projeto todo
 - Para iniciar a api, no diretório /teste-tecnico-rkm/api-teste-tecnico/ execute `php artisan serve` ou `composer.phar run dev`
 - Para iniciar o frontend, basta clicar em "Go Live" no vscode, dentro do diretório raíz do projeto (/teste-tecnico-rkm/), então acessar "frontend" e abrir "home-page.html", como segue nas imagens![alt text](image-1.png)![alt text](image-2.png)![alt text](image-3.png)
+
+## Lista de requisitos cumpridos
+[x] Estruturação do banco de dados com migrations e seeds
+[x] Cadastro de pacientes 
+[x] Listar pacientes com nome e unidade
+[x] Pesquisa de pacientes pelo nome
+[x] Editar paciente existente
+[x] Exclusão de pacientes com confirmação
+[x] Nome, CPF, data de nascimento e unidade de saúde são obrigatórios
+[x] CPF único
+[x] Rotas da API Laravel retornando os dados esperados
+[x] Utilizar Controllers, Models e migrations do Laravel
+[x] Validar os dados no backend usando recursos do Laravel
+[x] Carregar unidades de saúde da API para um campo de seleção
+[] Erros de validação apresentados ao usuário
+[] Implementar o relacionamento entre Patient e HealthUnit no Eloquent
+[] Uso da rota GET /api/patients com busca opcional 
